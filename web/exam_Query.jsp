@@ -13,36 +13,43 @@
     <title>Title</title>
 </head>
 <body>
-temp
-<table style="border: 35px;">
-    <tr align="center">
-        <td>试题编号</td>
-        <td>试题标题</td>
-        <td>A</td>
-        <td>B</td>
-        <td>C</td>
-        <td>D</td>
-        <td>试题答案</td>
-    </tr>
+<center>
+    <table border="2">
+        <tr align="center">
+            <td>试题编号</td>
+            <td>试题标题</td>
+            <td>A选项</td>
+            <td>B选项</td>
+            <td>C选项</td>
+            <td>D选项</td>
+            <td>试题答案</td>
+            <td>操作</td>
+        </tr>
 
-    <%
-        List list = (List) request.getAttribute("exam_Info");
-    %>
+        <%
+            List exams = (List)request.getAttribute("exam_Info");
+            for (int i = 0; i < exams.size(); i++) {
+                Exam exam = (Exam)exams.get(i);
+        %>
 
-    <tr align="center">
-        <td></td>
-        <td>试题标题</td>
-        <td>A</td>
-        <td>B</td>
-        <td>C</td>
-        <td>D</td>
-        <td>试题答案</td>
-    </tr>
+        <tr align="center">
+            <td><%=exam.getExamID()%></td>
+            <td><%=exam.getTitle()%></td>
+            <td><%=exam.getOptionA()%></td>
+            <td><%=exam.getOptionB()%></td>
+            <td><%=exam.getOptionC()%></td>
+            <td><%=exam.getOptionD()%></td>
+            <td><%=exam.getAnswer()%></td>
+            <td>
+                <a href="/myWeb/exam/del?examID=<%=exam.getExamID()%>">删除试题</a>
+                <a href="/myWeb/exam/findByID?examID=<%=exam.getExamID()%>">更新试题</a>
+            </td>
+        </tr>
 
-</table>
-
-
-
-
+        <%
+            }
+        %>
+    </table>
+</center>
 </body>
 </html>

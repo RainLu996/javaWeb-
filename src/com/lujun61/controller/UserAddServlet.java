@@ -28,11 +28,20 @@ public class UserAddServlet extends HttpServlet {
         int result = dao.add(user);
 
         //3、使用【响应对象】将【处理结果】以二进制形式写入到响应体中
+        /*
         if (result == 1) {
-            out.println("<center><font style=\"color: red;font-size: 30px\"><a href='/myWeb/index.html'>用户信息注册成功<a/></font><center/>");
+            out.println("<center><font style=\"color: red;font-size: 30px\"></font><center/>");
         } else {
-            out.println("<center><font style=\"color: red;font-size: 30px\">用户信息注册失败</font><center/>");
+            out.println("<center><font style=\"color: red;font-size: 30px\"></font><center/>");
         }
+
+         */
+        if (result == 1) {
+            request.setAttribute("info", "用户信息注册成功");
+        } else {
+            request.setAttribute("info", "用户信息注册失败");
+        }
+        request.getRequestDispatcher("/info.jsp").forward(request, response);
 
                         /* 由HTTP服务器自动完成的 */
         //销毁【请求对象】和【响应对象】

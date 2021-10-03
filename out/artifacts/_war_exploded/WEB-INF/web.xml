@@ -3,6 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <!--自定义默认欢迎资源文件规则-->
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
+
+    <!--为过滤器注册信息-->
+    <filter>
+        <filter-name>IllegalLoginFilter</filter-name>
+        <filter-class>com.lujun61.filter.IllegalLoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>IllegalLoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>UserAddServlet</servlet-name>
         <servlet-class>com.lujun61.controller.UserAddServlet</servlet-class>
@@ -27,16 +43,48 @@
         <servlet-name>ExamQueryServlet</servlet-name>
         <servlet-class>com.lujun61.controller.ExamQueryServlet</servlet-class>
     </servlet>
-    <!--过滤器注册-->
-    <filter>
-        <filter-name>IllegalLoginFilter</filter-name>
-        <filter-class>com.lujun61.filter.IllegalLoginFilter</filter-class>
-    </filter>
+    <servlet>
+        <servlet-name>ExamDeleteServlet</servlet-name>
+        <servlet-class>com.lujun61.controller.ExamDeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExamUpdateServlet</servlet-name>
+        <servlet-class>com.lujun61.controller.ExamUpdateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExamFindByIDServlet</servlet-name>
+        <servlet-class>com.lujun61.controller.ExamFindByIDServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExamRandServlet</servlet-name>
+        <servlet-class>com.lujun61.controller.ExamRandServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ScoreServlet</servlet-name>
+        <servlet-class>com.lujun61.controller.ScoreServlet</servlet-class>
+    </servlet>
 
-    <filter-mapping>
-        <filter-name>IllegalLoginFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ScoreServlet</servlet-name>
+        <url-pattern>/exam/score</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExamRandServlet</servlet-name>
+        <url-pattern>/exam/rand</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExamFindByIDServlet</servlet-name>
+        <url-pattern>/exam/findByID</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExamUpdateServlet</servlet-name>
+        <url-pattern>/exam/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExamDeleteServlet</servlet-name>
+        <url-pattern>/exam/del</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ExamQueryServlet</servlet-name>
         <url-pattern>/exam/find</url-pattern>
@@ -61,9 +109,4 @@
         <servlet-name>UserAddServlet</servlet-name>
         <url-pattern>/user/add</url-pattern>
     </servlet-mapping>
-
-    <!--自定义默认欢迎资源文件规则-->
-    <welcome-file-list>
-        <welcome-file>login.html</welcome-file>
-    </welcome-file-list>
 </web-app>
