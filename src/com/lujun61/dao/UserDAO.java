@@ -22,7 +22,7 @@ public class UserDAO {
      * @date 2021-09-20 21:55:58
      */
     public int add(Users user) {
-        String sql = "insert into table_userinfo(userName, password, email, sex) values(?, ?, ?, ?)";
+        String sql = "insert into userinfo.table_userinfo(userName, password, email, sex) values(?, ?, ?, ?)";
         PreparedStatement ps = null;
         Connection conn = null;
         int result = 0;
@@ -50,7 +50,7 @@ public class UserDAO {
      * @date 2021-09-21 16:57:58
      */
     public List<Users> query() {
-        String sql = "select * from table_userinfo";
+        String sql = "select * from userinfo.table_userinfo";
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -86,7 +86,7 @@ public class UserDAO {
      * @date 2021-09-21 17:11:17
      */
     public int delete(String userID) {
-        String sql = "delete from table_userinfo where userID=?";
+        String sql = "delete from userinfo.table_userinfo where userID=?";
         Connection conn = null;
         PreparedStatement ps = null;
         int result = 0;
@@ -113,7 +113,7 @@ public class UserDAO {
      * @date 2021-09-21 23:15:27
      */
     public boolean login(String userName, String password) {
-        String sql = "select * from table_userinfo where userName=? and password=?";
+        String sql = "select * from userinfo.table_userinfo where userName=? and password=?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

@@ -22,7 +22,7 @@ public class ExamDAO {
      * @date 2021-09-22 10:23:49
      */
     public int add(Exam exam) {
-        String sql = "insert into table_exam(title,optionA,optionB,optionC,optionD,answer) " +
+        String sql = "insert into userinfo.table_exam(title,optionA,optionB,optionC,optionD,answer) " +
                 "values(?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -53,7 +53,7 @@ public class ExamDAO {
      * @date 2021-09-22 10:47:58
      */
     public List<Exam> query() {
-        String sql = "select * from table_exam";
+        String sql = "select * from userinfo.table_exam";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -89,7 +89,7 @@ public class ExamDAO {
      * @date 2021-10-03 14:01:17
      */
     public int deleteExam(String id) {
-        String sql = "delete from table_exam where examID=?";
+        String sql = "delete from userinfo.table_exam where examID=?";
         int result = 0;
         Connection conn = null;
         PreparedStatement ps = null;
@@ -114,7 +114,7 @@ public class ExamDAO {
      * @date 2021-10-03 15:14:32
      */
     public Exam findByID(String id) {
-        String sql = "select * from table_exam where examID=?";
+        String sql = "select * from userinfo.table_exam where examID=?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -151,7 +151,7 @@ public class ExamDAO {
      * @date 2021-10-03 16:33:25
      */
     public int updateExam(Exam exam) {
-        String sql = "update table_exam set title=?,optionA=?,optionB=?,optionC=?,optionD=?,answer=? where examID=?";
+        String sql = "update userinfo.table_exam set title=?,optionA=?,optionB=?,optionC=?,optionD=?,answer=? where examID=?";
         Connection conn = null;
         PreparedStatement ps = null;
         int result = 0;
@@ -178,7 +178,7 @@ public class ExamDAO {
     public List<Exam> randExam() {
         //rand()随机返回0~1之间的小数；但是在mysql中，rand()如果出现在order by之后，将随机返回0~9之间的数字
         //如果order by返回的数字大于了数据表中的最大列数，将自动转换为1
-        String sql = "select * from table_exam order by rand() limit 0,4";
+        String sql = "select * from userinfo.table_exam order by rand() limit 0,4";
 
         Connection conn = null;
         PreparedStatement ps = null;
